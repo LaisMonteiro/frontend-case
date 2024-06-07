@@ -1,62 +1,50 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useCallback } from "react";
+import debounce from "lodash/debounce";
 
-import logoImage from "../assets/logo.svg";
 import { TODO_LIST } from "./initial-state";
 import { ITodoTypes } from "./types";
+import { ITodo } from "./interfaces";
 
+import logoImage from "../../assets/logo.svg";
 import "./index.css";
 
 function Todo() {
-  const [items, setItems] = useState(TODO_LIST);
-  const [searchInputValue, setSearchInputValue] = useState("");
-  const [search, setSearch] = useState("");
+  const [items, setItems] = useState<ITodo[]>(TODO_LIST);
+  const [searchInputValue, setSearchInputValue] = useState<string>("");
 
-  const handleChange = (event: ChangeEvent<unknown>) => {
-    setSearchInputValue(event.target.value);
+  const handleSearch = (term: string) => {
+    setSearchInputValue(term);
+    if (term) {
+      const filtered = TODO_LIST.filter((todo) =>
+        todo.title.toLowerCase().includes(term.toLowerCase())
+      );
+      setItems(filtered);
+    } else {
+      setItems(TODO_LIST);
+    }
   };
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    setSearch(searchInputValue);
+  const debouncedSearch = useCallback(debounce(handleSearch, 300), []);
+
+  const handleChange = (value: string) => {
+    setSearchInputValue(value);
+
+    debouncedSearch(value);
   };
 
-  const handleDeleteTask = (id: number) => {
-    const editedItems = [];
-
-    items.map((item) => {
-      if (item.id !== id) {
-        editedItems.push(item);
-      }
-    })
-
-    setItems(editedItems);
+  const handleDeleteTask = (id: string) => {
+    setItems(items.filter((item) => item.id !== id));
   };
 
   const handleChangeTaskStatus = (id: string, status: ITodoTypes) => {
-    const reversedStatus = status === "pending" ? "pending" : "done";
-    const editedItems = [];
+    const reversedStatus = status === "pending" ? "done" : "pending";
 
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].id === id) {
-        editedItems.push({
-          ...items[i],
-          status: reversedStatus,
-        });
-      } else {
-        editedItems.push(items[i]);
-      }
-    }
-
-    setItems(editedItems);
+    setItems((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, status: reversedStatus } : todo
+      )
+    );
   };
-
-  useEffect(() => {
-    if (search || items)
-      setItems((currentItems) => [
-        ...currentItems,
-        ...TODO_LIST.filter((item) => item.title.includes(search)),
-      ]);
-  }, [search, items]);
 
   return (
     <main id="page" className="todo">
@@ -75,17 +63,16 @@ function Todo() {
           o status <strong>done</strong>)
         </p>
         <p className="disclaimer">
-          Items obrigatórios marcados com arteristico (<strong>*</strong>)
+          Items obrigatórios marcados com asterisco (<strong>*</strong>)
         </p>
         <div className="todo__wrapper">
-          <form className="todo__search" onSubmit={handleSearch}>
+          <form className="todo__search">
             <input
               id="search"
-              placeholder="busca por texto..."
-              value={searchValue}
-              onChange={handleChange}
+              placeholder="Busca por título..."
+              value={searchInputValue}
+              onChange={(e) => handleChange(e.target.value)}
             />
-            <button type="submit">buscar</button>
           </form>
           <ul className="todo__list">
             {items.length === 0 && (
@@ -94,11 +81,11 @@ function Todo() {
                 &#128533;
               </span>
             )}
-            {items.map((item, i) => {
+            {items.map((item, index) => {
               return (
-                <li>
+                <li key={index}>
                   <span>
-                    {i}
+                    {index + 1}
                     {item.required ? "*" : ""}.
                   </span>
                   <div className="todo__content">
@@ -117,12 +104,15 @@ function Todo() {
                       </div>
                     )}
                     <div className="todo__actions">
-                      <button onClick={() => handleDeleteTask(item.uuid)}>
+                      <button onClick={() => handleDeleteTask(item.id)}>
                         delete
                       </button>
                       <button
                         onClick={() =>
-                          handleChangeTaskStatus(item.id, item.status)
+                          handleChangeTaskStatus(
+                            item.id,
+                            item.status as ITodoTypes
+                          )
                         }
                       >
                         change to{" "}
@@ -131,7 +121,7 @@ function Todo() {
                         </strong>
                       </button>
                     </div>
-                  <div>
+                  </div>
                 </li>
               );
             })}

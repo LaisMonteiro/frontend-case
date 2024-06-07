@@ -1,4 +1,4 @@
-#login {
+.login {
   width: calc(100% - 50px);
   max-width: 674px;
   margin: 0 auto;
@@ -7,15 +7,16 @@
   background-color: var(--color-dark-main);
 }
 
-#login h1 {
+.login > h1 {
   font-size: 28px;
   line-height: 38px;
   color: var(--color-white);
   margin: 84px 0 48px;
+  font-weight: 400;
 }
 
-#login input,
-#login button {
+.login input,
+.login button {
   display: block;
   width: 100%;
   font-size: 16px;
@@ -24,16 +25,25 @@
   border-radius: 16px;
 }
 
-#login input {
+.login input {
   margin: 24px 0;
   background-color: var(--color-lighter-gray);
+  font-weight: lighter;
+  font-size: 15px;
 }
 
-#login button {
+.login button {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 48px;
   background-color: var(--color-white);
   cursor: pointer;
+  color: var(--color-dark-main);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.login small {
+  color: var(--color-white);
 }
