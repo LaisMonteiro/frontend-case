@@ -41,9 +41,9 @@ function Login() {
         }
       );
 
-      localStorage.setItem("isAuthenticated", "true");
+      const token = response.data.token;
+      localStorage.setItem("token", token);
 
-      console.log("Login successful:", response.data);
       return response.data;
     } catch (error) {
       console.error("Login error:", error);

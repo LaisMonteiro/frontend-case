@@ -6,7 +6,7 @@ export default function List() {
 
   // Handlers
   const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
