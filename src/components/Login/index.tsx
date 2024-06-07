@@ -41,6 +41,8 @@ function Login() {
         }
       );
 
+      localStorage.setItem("isAuthenticated", "true");
+
       console.log("Login successful:", response.data);
       return response.data;
     } catch (error) {

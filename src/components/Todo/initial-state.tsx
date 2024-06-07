@@ -165,6 +165,19 @@ export const TODO_LIST = [
         Obrigada &#128640;
       </>
     ),
+    status: "done",
+    required: false,
+  },
+  {
+    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb7f",
+    ref: "7",
+    title: "Aprimorar segurança",
+    description: (
+      <>
+        Substituir autenticação por algo mais robusto como um Context Api, além
+        de adicionar cryptografia para as transação das informações.
+      </>
+    ),
     status: "pending",
     required: false,
   },
