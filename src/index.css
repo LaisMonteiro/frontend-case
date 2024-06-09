@@ -15,6 +15,9 @@
   --color-lighter-gray: #f0f4f8;
   --color-error: #ee3636;
   --color-success: #04aa6d;
+  --color-black: #3b3b3b;
+  --color-blue: #1a93da;
+  --color-border: #e2e7ec;
 
   font-family: "Roboto", sans-serif;
 }

@@ -98,7 +98,7 @@ export const TODO_LIST = [
         <br />O contrato esta no <strong>README.md</strong> do projeto.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
@@ -130,7 +130,7 @@ export const TODO_LIST = [
         <strong>CREDIT</strong>, dentro do response retornado pela api.
       </>
     ),
-    status: "pending",
+    status: "done",
     required: true,
     links: [
       {
@@ -169,13 +169,40 @@ export const TODO_LIST = [
     required: false,
   },
   {
-    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb7f",
-    ref: "7",
+    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb71",
+    ref: "8",
+    title: "Otimizar a busca",
+    description: (
+      <>
+        Melhor a experiência do usuário permitindo que faça a pesquisa após o
+        usuário terminar de digitar, ao invés de precisar pressionar o button
+        'Buscar'.
+      </>
+    ),
+    status: "done",
+    required: false,
+  },
+  {
+    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb72",
+    ref: "9",
     title: "Aprimorar segurança",
     description: (
       <>
         Substituir autenticação por algo mais robusto como um Context Api, além
         de adicionar cryptografia para as transação das informações.
+      </>
+    ),
+    status: "pending",
+    required: false,
+  },
+  {
+    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb72",
+    ref: "9",
+    title: "Adicionar controle de estado globais",
+    description: (
+      <>
+        Adicionar um controle de estado para variaveis globais, facilitando o
+        acesso a informações na aplicação (Context ou Redux, por exemplo).
       </>
     ),
     status: "pending",

@@ -1,0 +1,121 @@
+
+.transaction-container {
+  padding: 20px;
+  color: var(--color-black);
+  margin: 1rem 10rem;
+}
+
+.filter-buttons {
+  display: flex;
+  margin-bottom: 20px;
+  border-radius: 50px;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 5px;
+  border-radius: 50px;
+}
+
+.filter-button.active {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border-radius: 50px;
+}
+
+.transaction-group {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  z-index: 1;
+}
+
+.date {
+  font-weight: bold;
+  background-color: var(--color-white);
+  font-size: 14px;
+}
+
+.transaction {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.transaction-group-decor {
+  position: absolute
+}
+
+.transaction.debit {
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+}
+
+.transaction.credit {
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.description {
+  margin: 2px 0;
+  color: var(--color-blue);
+  width: 20rem;
+}
+
+.label, .name, .amount {
+  margin: 2px 0;
+}
+
+
+.amount-credit {
+  font-weight: bold;
+  color: var(--color-blue);
+}
+
+.amount-debit {
+  font-weight: bold;
+}
+
+.logout {
+  background-color: transparent;
+  padding: 1rem;
+  cursor: pointer;
+  color: var(--color-main);
+}
+
+.transactions-buttons-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.transaction-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.transaction-decor {
+  border-left: 1px solid var(--color-border);
+  margin-left: 2rem;
+  height: 1rem;
+}
+
+.images {
+  margin-right: 16px;
+}
