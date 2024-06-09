@@ -7,12 +7,15 @@ import arrowRightImage from "../../assets/arrow-right.svg";
 import "./index.css";
 
 function Login() {
+  /* States */
   const [cpf, setCpf] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [hasError, setHasError] = useState<string>();
 
+  /* Hooks */
   const navigate = useNavigate();
 
+  /* Handlers */
   const handleChangeCPF = (value: string) => {
     setCpf(value);
 
@@ -70,6 +73,7 @@ function Login() {
     }
   };
 
+  /* Render */
   return (
     <div className="login">
       <img src={logoFullImage} alt="Cora" title="Cora" />

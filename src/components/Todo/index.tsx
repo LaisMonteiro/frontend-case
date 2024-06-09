@@ -9,9 +9,11 @@ import logoImage from "../../assets/logo.svg";
 import "./index.css";
 
 function Todo() {
+  /* States */
   const [items, setItems] = useState<ITodo[]>(TODO_LIST);
   const [searchInputValue, setSearchInputValue] = useState<string>("");
 
+  /* Handlers */
   const handleSearch = (term: string) => {
     setSearchInputValue(term);
     if (term) {
@@ -46,6 +48,7 @@ function Todo() {
     );
   };
 
+  /* Render */
   return (
     <main id="page" className="todo">
       <div>
