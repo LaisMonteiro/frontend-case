@@ -10,9 +10,9 @@ export interface ILinks {
 export interface ITodo {
   description: ReactNode;
   id: string;
+  links?: ILinks[];
   ref: string;
   required: boolean;
   status: ITodoTypes | string;
   title: string;
-  links?: ILinks[];
 }
