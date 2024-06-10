@@ -196,8 +196,8 @@ export const TODO_LIST = [
     required: false,
   },
   {
-    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb72",
-    ref: "9",
+    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb73",
+    ref: "10",
     title: "Adicionar controle de estado globais",
     description: (
       <>
@@ -206,6 +206,19 @@ export const TODO_LIST = [
       </>
     ),
     status: "pending",
+    required: false,
+  },
+  {
+    id: "be4f2532-aca4-46c8-84b8-c9fe41d7fb74",
+    ref: "11",
+    title: "Adicionar página para rota não encontrada",
+    description: (
+      <>
+        Adicionar uma simples view para renderização quando cair em uma rota não
+        encontrada (404).
+      </>
+    ),
+    status: "done",
     required: false,
   },
 ];
